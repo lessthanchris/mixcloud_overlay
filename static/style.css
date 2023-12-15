@@ -1,0 +1,157 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+    background: red;
+}
+
+.song_info {
+    color: white;
+    margin-right: 2em;
+    margin-bottom: 0em;
+}
+
+#track_info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#album_art {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+}
+
+#logo_container {
+    position: absolute;
+    top: -50;
+    right: 0;
+}
+
+#marquee {
+    -moz-animation: marquee 40s linear infinite;
+    -webkit-animation: marquee 40s linear infinite;
+    animation: marquee 40s linear infinite;
+    width:150%;
+  }
+
+@-moz-keyframes marquee {
+0% {
+    transform: translateX(75%);
+}
+100% {
+    transform: translateX(-75%);
+}
+}
+@-webkit-keyframes marquee {
+0% {
+    transform: translateX(75%);
+}
+100% {
+    transform: translateX(-75%);
+}
+}
+@keyframes marquee {
+0% {
+    -moz-transform: translateX(75%);
+    -webkit-transform: translateX(75%);
+    transform: translateX(75%)
+}
+100% {
+    -moz-transform: translateX(-75%);
+    -webkit-transform: translateX(-75%);
+    transform: translateX(-75%);
+}
+}
+
+h2 {
+    color: white;
+}
+
+#follower_count {
+    margin-top: -75px;
+    text-align: center;
+    color: white;
+}
+
+p {
+    color: white;
+    margin: 0;
+}
+
+.container {
+    width: 50em;
+    height: 8em;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.marquee {
+    top: 6em;
+    position: relative;
+    box-sizing: border-box;
+    animation: vert_marquee 15s linear infinite;
+}
+
+.marquee:hover {
+    animation-play-state: paused;
+}
+
+/* Make it move! */
+@keyframes vert_marquee {
+    0%   { top:   8em }
+    100% { top: -11em }
+}
+
+/* Make it look pretty */
+.microsoft .marquee {
+	margin: 0;
+    padding: 0 1em;
+    line-height: 1.5em;
+    font: 1em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+.microsoft:before, .microsoft::before,
+.microsoft:after,  .microsoft::after {
+    left: 0;
+    z-index: 1;
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    width: 100%; height: 2em;
+    background-image: linear-gradient(top, #FFF, rgba(255,255,255,0));
+}
+
+.microsoft:after, .microsoft::after {
+    bottom: 0;
+    transform: rotate(180deg);
+}
+
+.microsoft:before, .microsoft::before {
+    top: 0;
+}
+
+/* Style the links */
+.vanity {
+    color: #333;
+    text-align: center;
+    font: .75em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+.vanity a, .microsoft a {
+    color: #1570A6;
+    transition: color .5s;
+    text-decoration: none;
+}
+
+.vanity a:hover, .microsoft a:hover {
+    color: #F65314;
+}
+
+/* Style toggle button */
+.toggle {
+	display: block;
+    margin: 2em auto;
+}

@@ -1,0 +1,24 @@
+<head>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="microsoft container">
+            <h2 class="marquee">Follow us on Instagram @lessthanze.ro<br>
+            Find all of our shows at https://mixcloud.com/less-than-zero<br>
+            Recorded live on Thursday 7pm until 9pm<br>
+            Listen to our Mixtapes on Soundcloud https://soundcloud.com/less-than-zero-mixtape<br>
+            NOW STREAMING ON TWITCH https://twitch.tv/lessthanzerolive</h2>
+    </div>
+    <div id="logo_container">
+        <img id="logo" src="{{ url_for('static', filename='logo_original.png') }}" width="300px" height="300px"></img>
+        <h2 hx-get="/api/get_followers" hx-trigger="every 500ms"id="follower_count"></h2>
+    </div>
+    <div hx-get="/api/get_image_html" hx-trigger="every 500ms" id="album_art">
+    </div>
+    <div id="track_info">
+        <h1 id="marquee">
+            <div hx-get="/api/get_song" hx-trigger="every 500ms"></div>
+        </h1>
+    </div>
+</body>

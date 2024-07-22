@@ -1,6 +1,8 @@
 <head>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="{{ url for('static', filename='script.js') }}"></script>
 </head>
 <body>
     <div class="microsoft container">
@@ -18,7 +20,7 @@
     </div>
     <div id="track_info">
         <h1 id="marquee">
-            <div hx-get="/api/get_song" hx-trigger="every 500ms"></div>
+            <div id="song_info"></div>
         </h1>
     </div>
 </body>

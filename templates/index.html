@@ -12,7 +12,7 @@
     </div>
     <div id="logo_container">
         <img id="logo" src="{{ url_for('static', filename='logo_original.png') }}" width="300px" height="300px"></img>
-        <h2 hx-get="/api/get_followers" hx-trigger="every 500ms"id="follower_count"></h2>
+        <h2 hx-get="/api/get_followers" hx-trigger="every 500ms" id="follower_count"></h2>
     </div>
     <div hx-get="/api/get_image_html" hx-trigger="every 500ms" id="album_art">
     </div>

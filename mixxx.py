@@ -19,7 +19,6 @@ class MixxxCurrentPlaying:
         split_name = full_name.split(" - ")
         artist = split_name.pop(0)
         track = " - ".join(split_name)
-        print(track)
         return artist, track
     
     def get_metadata(self, song_string, return_image=False):

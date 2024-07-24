@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from flask_socketio import SocketIO
 from mixxx import MixxxCurrentPlaying
 from flask import send_file
 import io
@@ -6,6 +7,11 @@ from follower import FollowerAlert
 import time
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'secret!'
+socketIO = SocketIO(app)
+
+if __name__ == '__main__':
+    socketio.run(app)
 
 @app.route("/")
 def index():

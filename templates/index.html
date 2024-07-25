@@ -1,8 +1,7 @@
 <head>
     <script src="https://unpkg.com/htmx.org@1.9.9"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script src="jquery-3.7.1.min.js"></script>
-    <script src="{{ url for('static', filename='script.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="microsoft container">
@@ -14,13 +13,34 @@
     </div>
     <div id="logo_container">
         <img id="logo" src="{{ url_for('static', filename='logo_original.png') }}" width="300px" height="300px"></img>
-        <h2 hx-get="/api/get_followers" hx-trigger="every 500ms" id="follower_count"></h2>
+        <h2 id="follower_count"></h2>
     </div>
-    <div hx-get="/api/get_image_html" hx-trigger="every 500ms" id="album_art">
+    <div id="album_art">
     </div>
     <div id="track_info">
-        <h1 id="marquee">
-            <div id="song_info"></div>
-        </h1>
+      <marquee>
+        <div id="song_info"></div>
+      </marquee>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf-8">
+      var socket = io();
+      socket.on('followers',function(data){
+        $("#follower_count").html(data);
+      })
+      socket.on('song',function(data){
+        if (document.getElementById("song_info").innerHTML != data['html']) {
+          document.getElementById("song_info").innerHTML = data['html'];
+        };
+        if ($("#album_art").html() != data['image']){
+          $("#album_art").html(data['image']);
+        };
+      })
+      socket.on('connect',function(){
+          console.log("connecting");
+          socket.emit('song');
+          socket.emit('followers');
+          socket.emit('image');
+      });
+    </script>
 </body>

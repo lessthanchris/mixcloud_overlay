@@ -32,6 +32,7 @@ def sendmessage():
             "image": image,
         }
         emit('song', payload)
+        time.sleep(1)
 
 @socketio.on('followers')
 def send_followers():
@@ -39,6 +40,7 @@ def send_followers():
     while True:
         followers = get_followers()
         emit('followers', followers)
+        time.sleep(5)
 
 @app.route("/")
 def index():
